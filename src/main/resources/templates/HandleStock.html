@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:if="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" type="text/css" href="style.css">
+<div class="split left">
+    <div class="centered">
+        <h2>Procurement</h2>
+        <p>From suppliers</p>
+    </div>
+</div>
+
+<div class="split middle">
+    <div class="centered">
+        <h2>Warehouse</h2>
+        <p>Our stock</p>
+
+        <form method="POST" action="/warehouse">
+            <input type="field" name="searchBar" size="20"/>
+            <input type="submit" value="Submit">
+        </form>
+
+        <div th:each="product : ${allProducts}">
+        Name: <th th:text="${product.name}"></th>
+        StockQuantity: <th th:text="${product.stockquantity}"></th>
+        Category: <th th:text="${product.category}"></th>
+        Price: <th th:text="${product.price}"></th>
+        PurchasePrice: <th th:text="${product.purchaseprice}"></th>
+        </div>
+
+    </div>
+</div>
+
+<div class="split right">
+    <div class="centered">
+        <h2>Orders</h2>
+        <p>To customers</p>
+
+        <div th:each="custom : ${customer}">
+            Date: <th th:text="${custom.date}"></th>
+        <div th:each="ord : ${orderprod}" th:if="${custom.orderid==ord.orderid}">
+            <div th:each="product : ${allProducts}" th:if="${ord.productno==product.productno}">
+                Name: <th th:text="${product.name}"></th>
+            </div>
+            Quantity: <th th:text="${ord.quantity}"></th>
+        </div>
+        </div>
+
+    </div>
+</div>
+</html>
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<h1>Handle stock!</h1>-->
+
+<!--<form method="POST" action="/warehouse">-->
+<!--    <input type="field" name="searchBar" size="20"/>-->
+<!--    <input type="submit" value="Submit">-->
+<!--</form>-->
+
+<!--<div th:each="product : ${allProducts}">-->
+<!--    Name: <th th:text="${product.name}"></th>-->
+<!--    StockQuantity: <th th:text="${product.stockquantity}"></th>-->
+<!--    Category: <th th:text="${product.category}"></th>-->
+<!--    Price: <th th:text="${product.price}"></th>-->
+<!--    PurchasePrice: <th th:text="${product.purchaseprice}"></th>-->
+<!--</div>-->
+
+<!--<div th:each="custom : ${customer}">-->
+<!--    Date: <th th:text="${custom.date}"></th>-->
+<!--</div>-->
+
+<!--<div th:each="ord : ${orderprod}">-->
+<!--    Quantity: <th th:text="${ord.quantity}"></th>-->
+<!--</div>-->
+
+
+
+
+
+
+<!--</body>-->
+<!--</html>-->

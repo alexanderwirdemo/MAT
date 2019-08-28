@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:each="product : ${allProducts}">
+    Name: <th th:text="${product.name}"></th>
+    StockQuantity: <th th:text="${product.stockquantity}"></th>
+    Category: <th th:text="${product.category}"></th>
+    Price: <th th:text="${product.price}"></th>
+    PurchasePrice: <th th:text="${product.purchaseprice}"></th>
+</div>
+</body>
+</html>
